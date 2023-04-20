@@ -1,36 +1,34 @@
 import React, { useEffect, useState } from 'react'
 
-const initial={
-  url:"https://loremflickr.com/320/240/dog",
-  
-}
+function Form({addVideo}) { 
+  const intial={
+    url:'https://picsum.photos/200/300',
+    title:"",
+    views:''
+  }   
+  const [vid,setvid]=useState(intial);
 
-function Form( {addVid} ) {    
-    const [video,setVideo]=useState(
-      initial
-      )
-    function handleClick(e){
-        e.preventDefault();
-        addVid(video);
-        setVideo(initial)
-        
-      }
-    
-  function handle(e){
-    
-    console.log(e.target.name,e.target.value);
-    setVideo({...video,
-        [e.target.name]:e.target.value
+   function handleClick(e){
+      e.preventDefault();
+      addVideo(vid);
+      
+      
+   }
+  function handlechange(e){
+     setvid({...vid,
+      [e.target.name]:e.target.value
     })
-    
-  } 
+    setvid(intial);
 
- 
-  return (
+
+  }
+
+
+   return (
     <div>
         <form>
-            <input type='text' name="title" placeholder='title' onChange={handle} id='ok'></input>
-            <input type='text' name="views" placeholder='views' onChange={handle} id='notok' ></input>
+            <input type='text' name="title" placeholder='title' onChange={handlechange}></input>
+            <input type='text' name="views" placeholder='views' onChange={handlechange}></input>
             <button onClick={handleClick}>Submit</button>
         </form>
     </div>

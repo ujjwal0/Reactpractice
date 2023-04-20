@@ -1,17 +1,6 @@
 import React, { useState } from 'react'
 import "./Video.css"
 function Video(props) {
-//   const [play,setplay]=useState(false);
-  
-//  function handleClick(){
-//     if(play){
-//       console.log("pause");
-//     }
-//     else{
-//       console.log("play");
-//     }
-//    setplay(!play);
-//   }
 
 
   return (
