@@ -6,29 +6,28 @@ function Form({addVideo}) {
     title:"",
     views:''
   }   
+  
   const [vid,setvid]=useState(intial);
+
 
    function handleClick(e){
       e.preventDefault();
       addVideo(vid);
-      
-      
+      setvid(intial)
+
    }
   function handlechange(e){
      setvid({...vid,
       [e.target.name]:e.target.value
     })
-    setvid(intial);
-
-
   }
 
 
    return (
     <div>
         <form>
-            <input type='text' name="title" placeholder='title' onChange={handlechange}></input>
-            <input type='text' name="views" placeholder='views' onChange={handlechange}></input>
+            <input type='text' name="title" placeholder='title' onChange={handlechange} value={vid.title} ></input>
+            <input type='text' name="views" placeholder='views' onChange={handlechange} value={vid.views} ></input>
             <button onClick={handleClick}>Submit</button>
         </form>
     </div>

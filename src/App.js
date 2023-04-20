@@ -10,11 +10,13 @@ function App() {
 
   function addVideo(vid){
     setvideo([...video,{
-      ...vid,id:video.length+1}])
-
-    
+      ...vid,id:video.length+1}])    
   }
   
+
+  function deleteVid(id){
+    setvideo(video.filter(i=>i.id!==id));
+  }
 
   return (
 
@@ -23,7 +25,7 @@ function App() {
       <Form  addVideo={addVideo}  ></Form>
       {
         video.map((i)=>{
-         return  <Video src={i.url} title={i.title} views={i.views} ></Video>
+         return  <Video id={i.id}  src={i.url} title={i.title} views={i.views} deleteVid={deleteVid} ></Video>
         })
       }
      
