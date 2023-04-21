@@ -2,6 +2,7 @@ import './App.css';
 import Video from './Video.js';
 import Form from './Form';
 import { useReducer, useState } from 'react';
+import Card from './card.js';
 function App() {
 
   // const [video,setvideo]=useState([]);
@@ -39,11 +40,8 @@ function App() {
 
     {
        videok.map((i)=>{return <Video id={i.id}  src={i.url} title={i.title} views={i.views} deleteVid={deleteVid} ></Video>
+      })
     }
-    )} 
-
-   
-
     </div>
   );
 }

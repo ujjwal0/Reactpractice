@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
-
+import { Button, Checkbox, Input } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import { PoweroffOutlined } from '@ant-design/icons';
+import { Space } from 'antd';
 function Form({addVideo}) { 
   const intial={
     url:'https://picsum.photos/200/300',
@@ -26,9 +29,10 @@ function Form({addVideo}) {
    return (
     <div>
         <form>
-            <input type='text' name="title" placeholder='title' onChange={handlechange} value={vid.title} ></input>
-            <input type='text' name="views" placeholder='views' onChange={handlechange} value={vid.views} ></input>
-            <button onClick={handleClick}>Submit</button>
+            
+            <Input size="large"  prefix={<UserOutlined />} value={vid.title} name="title" placeholder='title' />
+            <Input size="large"  prefix={<UserOutlined />} value={vid.views} name="views" placeholder='views' />
+            <Button type="primary"  onClick={handleClick}>Click me!</Button>
         </form>
     </div>
   )
