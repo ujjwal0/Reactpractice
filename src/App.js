@@ -2,34 +2,46 @@ import './App.css';
 import Video from './Video.js';
 import Form from './Form';
 import { useReducer, useState } from 'react';
-import vid from './VidDb'
 function App() {
 
-  const [video,setvideo]=useState([]);
+  // const [video,setvideo]=useState([]);
 
+  const [videok,dispatch]=useReducer(reducerFunction,[]);
+
+  function reducerFunction(videok,action){
+       switch(action.type){
+          case 'addVideo':
+            return ([...videok,{
+            ...action.payload,id:videok.length+1}])
+
+          case 'deleteVid':
+            return (videok.filter(i=>i.id!==action.payload))
+
+          default: return videok
+       }
+  }
 
   function addVideo(vid){
-    setvideo([...video,{
-      ...vid,id:video.length+1}])    
+    dispatch({type:"addVideo",payload:vid})
+    console.log(vid);
+    console.log(videok)
   }
   
 
   function deleteVid(id){
-    setvideo(video.filter(i=>i.id!==id));
-  }
+    dispatch({type:"deleteVid",payload:id})  }
 
   return (
 
     <div>
 
       <Form  addVideo={addVideo}  ></Form>
-      {
-        video.map((i)=>{
-         return  <Video id={i.id}  src={i.url} title={i.title} views={i.views} deleteVid={deleteVid} ></Video>
-        })
-      }
-     
-   
+
+    {
+       videok.map((i)=>{return <Video id={i.id}  src={i.url} title={i.title} views={i.views} deleteVid={deleteVid} ></Video>
+    }
+    )} 
+
    
 
     </div>
